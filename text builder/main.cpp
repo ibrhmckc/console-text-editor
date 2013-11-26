@@ -191,4 +191,6 @@ int main()
     Kontrol Editor = new Kontrol();
     Editor.Klavye_Girisi_Al();
     return 0;
+    //fsdasdgfs
+    //fsdasdgfs
 }
