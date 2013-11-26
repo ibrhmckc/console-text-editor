@@ -49,6 +49,7 @@ void Ekle(int Giris){
         }
     }
 }
+
 void degistir(int Giris){
     //listede giris yapilmissa degistir
     if(Baslangic!=NULL){
@@ -102,6 +103,27 @@ char[] metni_diziye_cevir(){
 
     }
 }
+
+void sonrakine_gec(){
+    if(Baslangic!=NULL){
+        if(Kullanimda->Sonraki!=NULL){
+            Kullanimda=Kullanimda->Sonraki;
+
+        }
+
+    }
+}
+
+void oncekine_gec(){
+    if(Baslangic!=NULL){
+        if(Kullanimda->Onceki!=NULL){
+            Kullanimda=Kullanimda->Onceki;
+
+        }
+
+    }
+}
+
 };
 
 class Dosya{
@@ -116,6 +138,7 @@ public:
 class Kontrol{
 public:
     Metin Text = new Metin();
+    bool Degistir_Acik=false;
     void Klavye_Girisi_Al(){
         /*while(!kbhit()){
             //Klavye giris icin bekle
@@ -128,19 +151,19 @@ public:
         {
 
         //check if A key is pressed
-            if((keys[VK_A]&0xF0) && !(prevKeys[VK_A]&0xF0))
+            if((keys[VK_X]&0xF0) && !(prevKeys[VK_X]&0xF0))
             {
                 DoAPressed();
             }
             //check if S key is pressed too
-            if((keys[VK_S]&0xF0) && !(prevKeys[VK_S]&0xF0))
+            if((keys[VK_Y]&0xF0) && !(prevKeys[VK_Y]&0xF0))
             {
                 DoSPressed();
             }
             // the same goes for all keys you want to check
         }
     }
-    void kontrol_mu(char K){
+    void girisi_degerlendir(int K){
         switch(K){
             //Yon tuslari
             case 24: break;
@@ -151,6 +174,12 @@ public:
             case 63: break;
             // =
             case 61: break;
+
+            default:if(Degistir_Acik){
+                Text.degistir(K);
+                }else{
+                    Text.Ekle(K);
+                    } break;
         }
     }
 };
