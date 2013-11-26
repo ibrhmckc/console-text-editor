@@ -14,6 +14,7 @@ public:
     Liste_Elemani *Baslangic,*Son,*Kullanimda;
 void Ekle(int Giris){
 
+
     if(Baslangic->Onceki==NULL){
         //henuz giris yapilmamissa
         Liste_Elemani* Yeni = new Liste_Elemani;
@@ -54,6 +55,7 @@ void degistir(int Giris){
         Kullanimda->Karakter=Giris;
     }
 }
+
 void sil(){
     //listede giris yapilmissa degistir
     if(Baslangic!=NULL){
@@ -67,6 +69,39 @@ void sil(){
     }
 }
 
+int karakter_sayisi(){
+    if(Baslangic==NULL){
+        return 0;
+
+    }else{
+        int Sonuc=1;
+        Liste_Elemani* Gecici = Baslangic;
+        while(Gecici->Sonraki!=NULL){
+            Sonuc++;
+            Gecici=Gecici->Sonraki;
+        }
+        return Sonuc;
+    }
+}
+
+char[] metni_diziye_cevir(){
+    if(Baslangic==NULL){
+        return NULL;
+
+    }else{
+        char Dizi[karakter_sayisi()];
+        int i=0;
+        Liste_Elemani* Gecici = Baslangic;
+
+        while(Gecici->Sonraki!=NULL){
+            Dizi[i]=(char)Gecici->Karakter;
+            i++;
+            Gecici=Gecici->Sonraki;
+        }
+        return Dizi;
+
+    }
+}
 };
 
 class Dosya{
